@@ -7,8 +7,6 @@ notes = Table(
     'notes', metadata,
     Column('note_id', Integer(), primary_key=True),
     Column('content', Text(), nullable=True),
-
-    # Date fields
     Column('reminder_date', DateTime(), nullable=True),
     Column('created_on', DateTime(), default=datetime.now),
     Column('updated_on', DateTime(), default=datetime.now, onupdate=datetime.now)
