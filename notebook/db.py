@@ -6,7 +6,6 @@ metadata = MetaData()
 notes = Table(
     'notes', metadata,
     Column('note_id', Integer(), primary_key=True),
-    Column('title', String(64), nullable=False, unique=True),
     Column('content', Text(), nullable=True),
 
     # Date fields
@@ -15,6 +14,10 @@ notes = Table(
     Column('updated_on', DateTime(), default=datetime.now, onupdate=datetime.now)
 )
 
+
 engine = create_engine('sqlite:///db.sqlite3')
-metadata.create_all(engine)
 connection = engine.connect()
+
+
+def init_db():
+    metadata.create_all(engine)
