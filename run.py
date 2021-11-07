@@ -8,6 +8,7 @@ from notebook.db import init_db
 
 parser.add_argument("-g", "--get", help="Get note", type=int)
 parser.add_argument("-c", "--create", help="Create new note", type=str)
+parser.add_argument("-d", "--delete", help="Delete note by id", type=int)
 parser.add_argument("-u", "--update", help="Update note. Require using -t/--text flag to fill updated note content", type=int)
 parser.add_argument("-t", "--text", help="Content. Require using -u/--update flag to get updated note id", type=str)
 parser.add_argument("-s", "--search", help="Search note", type=str)
@@ -18,14 +19,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.get:
-        print("Getting note with id: {}".format(args.get))
+        print(get_note(args.get))
+    elif args.delete:
+        print(delete_note(args.delete))
     elif args.search:
-        print("Searching notes contains '{}' in content".format(args.search))
+        print(find_note(args.search))
     elif args.create:
-        print("Creating note with content: {}".format(args.create))
+        print(create_note(args.create))
     elif args.update and args.text:
-        print("Updating note {}. Content: {}".format(args.update, args.text))
+        print(update_note(args.update, args.text))
     elif args.init:
-        print("Note database initialized")
-
-    # pprint(update_note(3, 'this is second content'))
+        print(init_db())
