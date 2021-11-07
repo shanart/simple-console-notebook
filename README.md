@@ -1,3 +1,12 @@
+# Simple console notebook
+
+### Build
+```
+$ python -m build
+```
+
+
+### Usage
 ```
 $ python run.py -h
 
